@@ -10,6 +10,13 @@ make
 sudo make install
 ```
 
+## Config SSHD
+```
+nano /etc/ssh/sshd
+ChallengeResponseAuthentication yes
+UsePAM yes
+```
+
 ## Set PAM (require both password and OTP)
 https://serverfault.com/questions/996717/debian-add-a-new-pam-module-and-require-it-even-if-password-authentication-is-fa
 
