@@ -2,7 +2,7 @@
 ```
 git clone https://github.com/mgorny/google-authenticator-libpam-hardened
 cd google-authenticator-libpam-hardened
-# apt install autoconf automake libtool m4 pkg-config
+# apt install make autoconf automake libtool m4 pkg-config
 apt install libpam-dev liboath-dev libqrencode-dev
 ./bootstrap.sh
 ./configure
