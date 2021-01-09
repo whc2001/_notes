@@ -38,7 +38,7 @@ https://unix.stackexchange.com/questions/42039/configure-touchscreen-on-debian
     
 ## 配置长按右键单击模拟
 
-参考 https://www.systutorials.com/docs/linux/man/4-evdev/，长按右键模拟是 `EnableThirdButtonEmulation` 相关
+参考 https://www.systutorials.com/docs/linux/man/4-evdev/ ，长按右键模拟是 `EnableThirdButtonEmulation` 相关
 
 在 `/usr/share/X11/xorg.conf.d/10-evdev.conf` 增加的一节里写 Options 即可
 
