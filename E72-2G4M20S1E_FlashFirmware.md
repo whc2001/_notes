@@ -77,6 +77,6 @@ The bootloader triggering procedure is similar to ESP8266. Keep DIO_15 (GPIO0 on
 
 If you connect buttons like the image above: hold `Bootloader` button, tap `Reset` button, then release `Bootloader` button.
 
-Use [cc2538-bsl](https://github.com/JelmerT/cc2538-bsl), run: `cc2538-bsl -p COM3 -w path/to/your/firmware.hex` and wait for the operation to finish. 
+Use [cc2538-bsl](https://github.com/JelmerT/cc2538-bsl), run: `cc2538-bsl -p COMx -w path/to/your/firmware.hex` (change the serial port number and firmware path according to your setup) and wait for the operation to finish. 
 
 If error appears saying `Timeout waiting for ACK/NACK after 'Synch (0x55 0x55)'`, there is no response from the module. Check if you connected everything correctly and try the bootloader entering button sequence once again.
