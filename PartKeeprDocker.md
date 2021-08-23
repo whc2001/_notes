@@ -1,3 +1,5 @@
+https://github.com/mhubig/docker-partkeepr
+
 ## 国内源
 
 https://mirrors.tuna.tsinghua.edu.cn/help/docker-ce/
@@ -17,6 +19,12 @@ https://github.com/mhubig/docker-partkeepr/blob/2502a3550c7d5f38eab26ca2390345cf
 `MYSQL_ROOT_PASSWORD="..."`
 
 
-## Backup
+## Backup & Restore
+
+Backup
 
 `docker exec partkeepr_database /usr/bin/mysqldump -uroot -ppassword partkeepr > partkeepr.sql`
+
+Restore
+
+`cat partkeepr.sql | docker exec -i partkeepr_database /usr/bin/mysql -uroot -ppassword partkeepr`
