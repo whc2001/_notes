@@ -11,3 +11,12 @@ https://superuser.com/a/670071
 # DO NOT ENABLE **KDF** OR PIN WILL NOT WORK FOR `PAGEANT.EXE` BY PETER KOCH
 
 # DO NOT RUN `gpg-connect-agent /bye` WITH ADMIN OR PUTTY WILL NOT BE ABLE TO CONNECT
+
+# sudo 
+apt install libpam-ssh-agent-auth
+
+## visudo 
+Defaults env_keep += SSH_AUTH_SOCK
+
+## /etc/pam.d/sudo 
+auth sufficient pam_ssh_agent_auth.so file=~/.ssh/authorized_keys
