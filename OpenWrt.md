@@ -22,7 +22,7 @@ for deviceName in ${devices}; do
     done < $CONF_FILE
     if [ $hasConf -eq 0 ]; then
         # If not specified in config file, default to last 4 digit of MAC
-        defName="eth$(echo -n $deviceMAC | sed "s/://g" | tail -c 4 | tr "a-z" "A-Z")"
+        defName="eth$(echo -n $deviceMAC | sed "s/://g" | tail -c 4 | tr "a-f" "A-F")"
         ip link set "${deviceName}" name "${defName}"
     fi
 done
