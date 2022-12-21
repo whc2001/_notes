@@ -20,9 +20,9 @@ elif [[ $(echo $cts | grep $oldVMID &> /dev/null; echo $?) -eq 0 ]]; then
   oldType="CT"
 fi
 
-# Check if the old ID exists, if not then exit
+# Check if the old VMID exists, if not then exit
 if [[ -z $oldType ]]; then
-    echo "Can't find VMID $oldVMID"
+    echo "Can't find old VMID $oldVMID"
     exit 1
 fi
 
@@ -37,7 +37,7 @@ fi
 echo "Renaming disks"
 for i in $(lvs -a | grep $vgNAME | awk '{print $1}' | grep $oldVMID);
 do
-  #lvrename /dev/$vgNAME/vm-$oldVMID-disk-$(echo $i | awk '{print substr($0,length,1)}') /dev/$vgNAME/vm-$newVMID-disk-$(echo $i | awk '{print substr($0,length,1)}')
+  lvrename /dev/$vgNAME/vm-$oldVMID-disk-$(echo $i | awk '{print substr($0,length,1)}') /dev/$vgNAME/vm-$newVMID-disk-$(echo $i | awk '{print substr($0,length,1)}')
 done
 
 echo "Renaming config"
