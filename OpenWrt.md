@@ -15,7 +15,6 @@ for deviceName in ${devices}; do
         confMAC=$(echo -n "$line" | cut -f 1)
         confName=$(echo -n "$line" | cut -f 2)
         if [ -n "${confMAC}" -a -n "${confName}" ] && [ "${deviceMAC}" == "${confMAC}" ]; then
-            echo "Setting $deviceName to $confName"
             ip link set "${deviceName}" name "${confName}"
             hasConf=1
             break
