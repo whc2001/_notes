@@ -48,5 +48,9 @@
 
 - `apt install systemd-journal-remote`
 
+## Home Assistant OS-Agent
+
+- https://github.com/home-assistant/os-agent
+
 REBOOT!!!
 
