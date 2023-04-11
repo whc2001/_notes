@@ -52,6 +52,14 @@
 
 - https://github.com/home-assistant/os-agent
 
+## ModemManager
+
+If using serial ports (/dev/tty), do this to prevent problems
+
+`systemctl stop ModemManager`
+
+`systemctl disable ModemManager`
+
 REBOOT!!!
 
 # Install
