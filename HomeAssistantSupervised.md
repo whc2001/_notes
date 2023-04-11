@@ -54,3 +54,7 @@
 
 REBOOT!!!
 
+# Install
+
+https://github.com/home-assistant/supervised-installer
+
