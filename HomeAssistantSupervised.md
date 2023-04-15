@@ -66,3 +66,10 @@ REBOOT!!!
 
 https://github.com/home-assistant/supervised-installer
 
+# Make hooked touchscreen showing dashboard
+
+- [DebianTouchscreen.md](DebianTouchscreen.md)
+
+- https://www.willhaley.com/blog/debian-fullscreen-gui-kiosk/
+
+- https://www.home-assistant.io/docs/authentication/providers/#trusted-networks
