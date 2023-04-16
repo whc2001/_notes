@@ -47,6 +47,8 @@
 > Systemd journal gateway is enabled and mapped into supervisor as `/run/systemd-journal-gatewayd.sock`
 
 - `apt install systemd-journal-remote`
+- `systemctl enable systemd-journal-gatewayd`
+- `systemctl start systemd-journal-gatewayd`
 
 ## Home Assistant OS-Agent
 
