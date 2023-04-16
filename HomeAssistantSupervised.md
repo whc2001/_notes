@@ -70,6 +70,8 @@ https://github.com/home-assistant/supervised-installer
 
 ```bash
 mkdir /home/hass/hassio
+chown -R hass:hass /home/hass/hassio
+chmod -R 700 /home/hass/hassio
 export DATA_SHARE=/home/hass/hassio
 dpkg --force-confdef --force-confold -i homeassistant-supervised.deb
 ```
