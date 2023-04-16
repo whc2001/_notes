@@ -83,3 +83,7 @@ dpkg --force-confdef --force-confold -i homeassistant-supervised.deb
 - https://www.willhaley.com/blog/debian-fullscreen-gui-kiosk/
 
 - https://www.home-assistant.io/docs/authentication/providers/#trusted-networks
+
+# Disable hibernating
+
+- https://wiki.debian.org/Suspend
