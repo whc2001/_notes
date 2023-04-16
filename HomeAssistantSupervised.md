@@ -68,6 +68,12 @@ REBOOT!!!
 
 https://github.com/home-assistant/supervised-installer
 
+```bash
+mkdir /home/hass/hassio
+export DATA_SHARE=/home/hass/hassio
+dpkg --force-confdef --force-confold -i homeassistant-supervised.deb
+```
+
 # Make hooked touchscreen showing dashboard
 
 - [DebianTouchscreen.md](DebianTouchscreen.md)
