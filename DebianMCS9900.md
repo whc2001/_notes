@@ -1,36 +1,4 @@
-# HAVE TO DISABLE MODULE SIGNING AND RECOMPILE NEW KERNEL THAT CANNOT BE UPGRADED
-
-## According to readme, need to recompile kernel
-
-> 1. Need to disable the original 8250 driver for 99xx chips
-> 2. Need to disable module signature verification
-
-```bash
-
-# Download source
-
-apt install libssl-dev libelf-dev dwarves
-apt install linux-source
-cd /usr/src
-tar -axvf linux-source-5.10.tar.xz
-cd linux-source-5.10
-
-# Copy and modify current config
-
-cp /boot/config-$(uname -r) ./.config
-nano .config
-# Find "CONFIG_MODULE_SIG=y", set to "n"
-# Find "CONFIG_MODULE_SIG_ALL is not set", set to "n"
-# Find "CONFIG_SYSTEM_TRUSTED_KEYS", set to empty string
-
-# Edit source to disable builtin 8250 driver
-
-nano drivers/tty/serial/8250/8250_pci.c
-# Go to around line 5646, find the defines with "PCI_DEVICE_ID_NETMOS_99xx"
-# Comment them all
-
-
-```
+# ~~HAVE TO DISABLE MODULE SIGNING AND RECOMPILE NEW KERNEL THAT CANNOT BE UPGRADED~~
 
 ## Download and unzip driver pack
 
@@ -48,5 +16,28 @@ nano Makefile
 
 make
 make install
-echo "99xx" > /etc/modules-load.d/mcs99xx.conf
 ```
+
+## Free the device from kernel builtin serial driver
+
+https://unix.stackexchange.com/questions/599690/how-to-blacklist-built-in-kernel-module-8250-pci
+
+https://askubuntu.com/questions/1393562/unbind-and-bind-driver-during-startup-20-04-3-lts
+
+Because the support is compiled into the kernel not loaded dynamically, cannot use `remove_id`, only `unbind`. Run `lspci -vv`, check the corresponding devices should say something like `kernel driver in use: serial`, indicates the kernel driver is occupying the device.
+
+Add the following script to startup on boot
+
+```bash
+# Disable kernel serial driver on the devices
+devices=$(lspci | awk '/MCS9900/ {print "0000:"$1}')
+echo "$devices" | while IFS= read -r line; do
+    echo "$line" > /sys/bus/pci/drivers/serial/unbind
+done
+
+# (Re)load vendor driver
+modprobe -r -f 99xx || true
+modprobe -f 99xx
+```
+
+After reboot do `lspci -vv` again, should say something like `kernel driver in use: saturn` and `/dev/ttyFx` appears, indicates the vendor driver is working.
