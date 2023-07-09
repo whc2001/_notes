@@ -76,3 +76,20 @@ You can use the patch above, or follow the patch content to modify the function 
 - The first parameter need to go one layer deeper, original is `dev` now should be `&dev->dev`
 - The last parameter of the new API (the `GFP_`) can simply be `GFP_KERNEL`
 
+## Customize names
+
+The default device name is `ttyF*` and driver name is `saturn`, which may not be clear enough.
+
+Find `starex_serial_driver` in `99xx.c`, and you can change the values in `driver_name` and `dev_name`. Here is an example:
+
+```c
+static struct uart_driver starex_serial_driver = {
+        .owner                  = THIS_MODULE,
+        .driver_name            = "MCS9900 vendor driver",
+        .dev_name               = "ttyMCS",
+        .major                  = 200,
+        .minor                  = 0,
+        .nr                     = UART99xx_NR,
+        .cons                   = NULL,
+};
+```
