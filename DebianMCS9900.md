@@ -11,8 +11,10 @@ tar -zxvf MCS99xx_LINUX_Driver_v3.1.0_Source.tar.gz
 cd MCS99xx_LINUX_Driver_v3.1.0_Source
 
 nano Makefile
-# Change "ifeq ($(MAJORVERSION),4)" on line 10 to "5"
+# Change the 4 in "ifeq ($(MAJORVERSION),4)" on line 10 to the current kernel major version you have, e.g., "5" or "6"
 # Change "SUBDIRS" on line 32 to "M"
+
+# >>>>> IF YOU ARE ON KERNEL 6.X, FOLLOW THE "New change on kernel 6.X" SECTION BELOW NOW!!!! <<<<<
 
 make
 make install
@@ -41,3 +43,36 @@ modprobe -f 99xx
 ```
 
 After reboot do `lspci -vv` again, should say something like `kernel driver in use: saturn` and `/dev/ttyFx` appears, indicates the vendor driver is working.
+
+## New change on kernel 6.X
+
+There are some API changes on 6.x, so we need to modify more
+
+### set_termios and MODULE_SUPPORTED_DEVICE
+```
+nano 99xx.c
+
+# Search "serial99xx_set_termios"
+# Change "struct ktermios *old" to "const struct ktermios *old"
+
+# Navigate to the end of the file
+# Comment out the line starts with "MODULE_SUPPORTED_DEVICE"
+```
+
+### PCI DMA API Major Change
+
+On kernel 6.x the PCI DMA API has changed a lot:
+
+https://lore.kernel.org/lkml/20220106222804.GA330366@bhelgaas/t/
+
+However we can change it to the new API easily:
+
+https://lore.kernel.org/kernel-janitors/20200716192821.321233-1-christophe.jaillet@wanadoo.fr/
+
+You can use the patch above, or follow the patch content to modify the function calls. 
+
+- `pci_alloc_consistent` -> `dma_alloc_coherent`
+- `pci_free_consistent` -> `dma_free_coherent`
+- The first parameter need to go one layer deeper, original is `dev` now should be `&dev->dev`
+- The last parameter of the new API (the `GFP_`) can simply be `GFP_KERNEL`
+
