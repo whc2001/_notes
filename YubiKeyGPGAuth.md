@@ -8,6 +8,8 @@ https://medium.com/byteschneiderei/setting-up-pam-ssh-agent-auth-for-sudo-login-
 
 https://superuser.com/a/670071
 
+https://gist.github.com/BoGnY/f9b1be6393234537c3e247f33e74094a
+
 # DO NOT ENABLE **KDF** OR PIN WILL NOT WORK FOR `PAGEANT.EXE` BY PETER KOCH
 
 # DO NOT RUN `gpg-connect-agent /bye` WITH ADMIN OR PUTTY WILL NOT BE ABLE TO CONNECT
