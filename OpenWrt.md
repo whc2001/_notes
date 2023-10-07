@@ -1,3 +1,6 @@
+# EXT4 Filesystem Become RO
+> https://forum.openwrt.org/t/why-is-openwrts-dev-root-turn-to-read-only-mode/28631/4?u=whc2001
+
 # Change eth device name according to MAC address
 > https://openwrt.org/docs/guide-user/base-system/hotplug#rename_interfaces_by_mac_address
 
