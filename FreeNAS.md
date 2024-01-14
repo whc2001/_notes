@@ -1,5 +1,7 @@
 # Set ZFS memory
 
+Adjust `pct` to set maximum memory usage percentage for ZFS
+
 ```
 grep '^MemTotal' /proc/meminfo | awk -v pct=90 '{printf "%d", $2 * 1024 * (pct / 100.0)}' > /sys/module/zfs/parameters/zfs_arc_max; echo "$((8*1024*1024*1024))" > /sys/module/zfs/parameters/zfs_arc_sys_free
 ```
