@@ -21,7 +21,6 @@ Description=Automount NFS share
 
 [Automount]
 Where=/mnt/data
-TimeoutIdleSec=10
 
 [Install]
 WantedBy=multi-user.target
