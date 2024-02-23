@@ -3,7 +3,7 @@
 [Unit]
 Description=Mount NFS Share
 After=network.target remote-fs.target
-Wants=network.target remote-fs.target
+Requires=network.target remote-fs.target
 
 [Mount]
 What=server:/path/to/share
