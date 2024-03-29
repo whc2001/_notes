@@ -52,3 +52,6 @@ fi
 unset oldVMID newVMID vgNAME;
 
 ```
+
+# Unmount before shutdown NAS VM:
+https://ruhnet.co/blog/recursive-storage-proxmox-using-nfs-or-iscsi-provided-virtualized-truenas-guest
