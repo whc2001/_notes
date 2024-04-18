@@ -55,3 +55,7 @@ unset oldVMID newVMID vgNAME;
 
 # Unmount before shutdown NAS VM:
 https://ruhnet.co/blog/recursive-storage-proxmox-using-nfs-or-iscsi-provided-virtualized-truenas-guest
+
+# ?
+https://forum.proxmox.com/threads/cpu-soft-lockup-after-vm-win10-shutdown.70481/#post-317249
+https://wiki.archlinux.org/index.php/PCI_passthrough_via_OVMF_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%85%B3%E9%97%AD%E4%B9%8B%E5%90%8E%E5%AE%BF%E4%B8%BB%E6%9C%BA%E6%A0%B8%E5%BF%83%E6%97%A0%E5%93%8D%E5%BA%94
