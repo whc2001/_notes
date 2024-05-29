@@ -12,3 +12,11 @@ SNI related, add the following to `nginx` reverse proxy config:
 proxy_ssl_name $host;
 proxy_ssl_server_name on;
 ```
+
+# Home Assistant
+
+## ESPHome WebSocket
+
+https://github.com/esphome/issues/issues/4327
+
+![image](https://github.com/whc2001/_notes/assets/16266909/4128816b-df14-4872-883d-21cf8019bf1e)
