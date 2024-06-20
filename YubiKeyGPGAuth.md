@@ -22,3 +22,9 @@ Defaults env_keep += SSH_AUTH_SOCK
 
 ## /etc/pam.d/sudo 
 auth sufficient pam_ssh_agent_auth.so file=~/.ssh/authorized_keys
+
+## Debian 12
+
+RSA no longer enabled by default
+
+`PubkeyAcceptedAlgorithms +ssh-rsa`
