@@ -10,17 +10,13 @@ grep '^MemTotal' /proc/meminfo | awk -v pct=90 '{printf "%d", $2 * 1024 * (pct /
 
 # Reverse Proxy WebUI with Different Port
 
-Resolves the problem that `https://xxx:12345` -> `https://xxx/ui` instead of `https://xxx:12345/ui`
+~~Resolves the problem that `https://xxx:12345` -> `https://xxx/ui` instead of `https://xxx:12345/ui`~~
 
 
-Assume FreeNAS instance at `1.2.3.4:80`
+~~Assume FreeNAS instance at `1.2.3.4:80`~~
 
-```
-proxy_set_header Host $host;
-proxy_set_header X-Real-IP $remote_addr;
-proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-proxy_set_header X-Forwarded-Proto $scheme;
+Problem related to NginxProxyManager, need to manually change config file to put `$http_host` in the bottom. See [nginx-proxy-manager/3729](https://github.com/NginxProxyManager/nginx-proxy-manager/pull/3729)
 
-proxy_redirect http://1.2.3.4:80/ /;
-proxy_redirect http://xxx/ui/ https://xxx:48877/ui/;
-```
+# Watch UDMA Error State
+
+`watch -n 1 -t 'for d in /dev/sd?; do v=$(smartctl -A $d | awk "/UDMA_CRC_Error_Count/ {print \$NF}"); [ -n "$v" ] && echo "$d: $v"; done'`
