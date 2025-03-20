@@ -1,3 +1,6 @@
+# Common utils
+`apt install lsscsi sg3-utils mtx mt-st sysstat`
+
 # Change tape script
 ```bash
 #!/bin/bash
