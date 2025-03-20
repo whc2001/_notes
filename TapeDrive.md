@@ -14,6 +14,8 @@ done
 # Set compression and clean tape
 `mt defcompression 0; mt rewind; mt erase 0; mt compression 0; mt status`
 
+`erase 0` = quick erase / `erase` or `erase 1` = long erase
+
 # Backup
 `tar --verbose --totals --create --multi-volume --blocking-factor=2048 --new-volume-script="/home/whc/tape_change.sh"  --file=/dev/nst0 ...`
 
